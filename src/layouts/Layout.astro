@@ -5,11 +5,13 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  showHeader?: boolean;
 }
 
 const {
   title = 'Alexander Engel',
-  description = 'Persönliche Website von Alexander Engel – über mich und Kontaktmöglichkeiten.',
+  description = 'Persönliche Website von Alexander Engel – Profil und Kontaktmöglichkeiten.',
+  showHeader = true,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
@@ -48,11 +50,17 @@ const year = new Date().getFullYear();
     />
   </head>
   <body>
-    <header class="site-header">
-      <div class="container">
-        <a href="/" class="wordmark">Alexander&nbsp;Engel</a>
-      </div>
-    </header>
+    {
+      showHeader && (
+        <header class="site-header">
+          <div class="container">
+            <a href="/" class="wordmark">
+              Alexander&nbsp;Engel
+            </a>
+          </div>
+        </header>
+      )
+    }
 
     <main>
       <slot />
@@ -60,11 +68,11 @@ const year = new Date().getFullYear();
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p class="copyright">© {year} Alexander Engel</p>
         <nav class="footer-nav" aria-label="Rechtliches">
           <a href="/impressum/">Impressum</a>
           <a href="/datenschutz/">Datenschutz</a>
         </nav>
+        <p class="copyright">© {year} Alexander Engel</p>
       </div>
     </footer>
   </body>

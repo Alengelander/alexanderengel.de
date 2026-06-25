@@ -3,96 +3,76 @@ import Layout from '../layouts/Layout.astro';
 
 // --- Kontaktdaten (hier zentral anpassbar) ---
 const email = 'alexander.engel@wyld-it.de';
-const github = 'https://github.com/Alengelander';
-// TODO: Eigene LinkedIn-URL eintragen (oder Zeile in der Kontakt-Liste entfernen).
+// TODO: Echte Telefonnummer eintragen (Format für den Link: ohne Leerzeichen, mit Ländervorwahl)
+const phoneHref = 'tel:+49';
+// TODO: Echte LinkedIn-URL eintragen
 const linkedin = 'https://www.linkedin.com/in/';
 ---
 
 <Layout
-  title="Alexander Engel – Über mich"
-  description="Alexander Engel – IT aus Leidenschaft. Erfahre mehr über mich und finde alle Kontaktmöglichkeiten."
+  title="Alexander Engel"
+  description="Alexander Engel – Profil und Kontaktmöglichkeiten."
+  showHeader={false}
 >
-  <section class="hero">
-    <div class="container">
-      <p class="eyebrow">Hallo, ich bin</p>
+  <section class="profile">
+    <div class="container profile-inner">
+      <div class="avatar">
+        <span class="avatar-fallback" aria-hidden="true">AE</span>
+        <img
+          src="/profile.jpg"
+          alt="Porträtfoto von Alexander Engel"
+          width="184"
+          height="184"
+          onerror="this.style.display='none'"
+        />
+      </div>
+
       <h1>Alexander Engel</h1>
-      <!-- TODO: Rolle/Untertitel anpassen -->
-      <p class="tagline">IT-Consultant &amp; Softwareentwickler</p>
-      <!-- TODO: Einleitungssatz personalisieren -->
-      <p class="lede">
-        Ich helfe dabei, IT einfacher, sicherer und zukunftsfähig zu machen –
-        von der ersten Idee bis zum laufenden Betrieb.
-      </p>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="container">
-      <h2>Über mich</h2>
-      <!-- TODO: Text durch deine eigene Geschichte ersetzen -->
-      <p>
-        Schön, dass du hier bist. Ich bin Alexander Engel und in der IT zu Hause –
-        von der Softwareentwicklung über Cloud-Infrastruktur bis hin zur Beratung.
-        Aktuell bin ich Teil des Teams bei wyld-it.
-      </p>
-      <p>
-        Mich begeistert es, komplexe Anforderungen in saubere, wartbare Lösungen
-        zu übersetzen und Technik so einzusetzen, dass sie den Menschen wirklich
-        weiterhilft.
-      </p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <h2>Schwerpunkte</h2>
-      <!-- TODO: Schwerpunkte anpassen oder ergänzen -->
-      <ul class="focus-list">
-        <li>
-          <h3>Softwareentwicklung</h3>
-          <p>
-            Moderne Web- und Backend-Anwendungen – von der Idee bis zum
-            produktiven Betrieb.
-          </p>
-        </li>
-        <li>
-          <h3>Cloud &amp; Infrastruktur</h3>
-          <p>
-            Skalierbare, sichere Infrastruktur und Automatisierung, die im Alltag
-            verlässlich trägt.
-          </p>
-        </li>
-        <li>
-          <h3>Beratung &amp; Projekte</h3>
-          <p>
-            Pragmatische Beratung, die Technik und Business zusammenbringt.
-          </p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="section" id="kontakt">
-    <div class="container">
-      <h2>Kontakt</h2>
-      <p>
-        Du möchtest dich vernetzen oder hast eine Frage? Ich freue mich, von dir
-        zu hören.
-      </p>
-      <dl class="contact">
-        <div class="contact-row">
-          <dt>E-Mail</dt>
-          <dd><a href={`mailto:${email}`}>{email}</a></dd>
-        </div>
-        <div class="contact-row">
-          <dt>GitHub</dt>
-          <dd><a href={github} rel="me">@Alengelander</a></dd>
-        </div>
-        <div class="contact-row">
-          <dt>LinkedIn</dt>
-          <dd><a href={linkedin} rel="me">Alexander Engel</a></dd>
-        </div>
-      </dl>
+      <nav class="socials" aria-label="Kontaktmöglichkeiten">
+        <a href={phoneHref} aria-label="Telefon" title="Telefon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"
+            ></path>
+          </svg>
+        </a>
+        <a href={`mailto:${email}`} aria-label="E-Mail" title="E-Mail">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+            <path d="m2 6 10 7 10-7"></path>
+          </svg>
+        </a>
+        <a
+          href={linkedin}
+          aria-label="LinkedIn"
+          title="LinkedIn"
+          target="_blank"
+          rel="me noopener noreferrer"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"
+            ></path>
+          </svg>
+        </a>
+      </nav>
     </div>
   </section>
 </Layout>
