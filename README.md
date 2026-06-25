@@ -11,6 +11,7 @@ npm install      # Abhängigkeiten installieren (einmalig)
 npm run dev      # Dev-Server auf http://localhost:4321
 npm run build    # Produktions-Build nach ./dist
 npm run preview  # gebauten Stand lokal anschauen
+npm run zip      # Build + fertige alexanderengel.de.zip zum Hochladen erzeugen
 ```
 
 ## Inhalte anpassen
@@ -26,9 +27,19 @@ npm run preview  # gebauten Stand lokal anschauen
 Stellen, die noch ausgefüllt werden müssen, sind mit `TODO` bzw. mit
 `[Platzhaltern in eckigen Klammern]` markiert.
 
-## Deployment (eigener Server)
+## Deployment (netcup / Webspace)
 
-`npm run build` erzeugt eine vollständig statische Seite im Ordner `dist/`.
-Den Inhalt von `dist/` einfach in das Webroot des Servers hochladen
-(z. B. per FTP/SFTP, rsync oder über die Deployment-Pipeline). Es wird kein
-Node.js auf dem Server benötigt.
+Die Seite ist vollständig statisch – auf dem Server wird kein Node.js benötigt.
+
+**Einfachster Weg (ZIP):** Die mitgelieferte Datei `alexanderengel.de.zip` auf
+den Webspace hochladen und im Webroot entpacken. Der Inhalt liegt auf oberster
+Ebene (kein Unterordner) und landet damit direkt im Webroot.
+
+Nach Änderungen das Paket neu erzeugen:
+
+```bash
+npm run zip
+```
+
+Das baut die Seite und schreibt eine aktualisierte `alexanderengel.de.zip`.
+Alternativ lässt sich der Inhalt von `dist/` auch direkt per FTP/SFTP hochladen.

@@ -8,6 +8,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "zip": "astro build && powershell -NoProfile -ExecutionPolicy Bypass -File scripts/zip.ps1",
     "astro": "astro"
   },
   "dependencies": {
