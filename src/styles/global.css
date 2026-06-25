@@ -172,7 +172,6 @@ a:hover {
   aspect-ratio: 1;
   border-radius: 50%;
   background: var(--color-bg);
-  padding: 14px;
   box-shadow: var(--nm-raised);
 }
 
@@ -184,17 +183,6 @@ a:hover {
   object-fit: cover;
   border-radius: 50%;
   display: block;
-}
-
-/* sanfter Innenschatten, damit das Foto in den Rahmen eingelassen wirkt */
-.avatar::after {
-  content: '';
-  position: absolute;
-  inset: 14px;
-  border-radius: 50%;
-  box-shadow: var(--nm-pressed-sm);
-  pointer-events: none;
-  z-index: 3;
 }
 
 .avatar-fallback {
