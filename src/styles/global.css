@@ -1,33 +1,46 @@
-/* ===== Design Tokens ===== */
+/* ===== Design Tokens (Neumorphismus) ===== */
 :root {
   --font-sans: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, Helvetica, Arial, sans-serif;
 
-  --color-bg: #ffffff;
-  --color-bg-subtle: #f6f6f7;
-  --color-text: #3f3f46;
-  --color-heading: #18181b;
-  --color-muted: #71717a;
-  --color-border: #e6e6e9;
-  --color-accent: #2563eb;
-  --color-accent-hover: #1d4ed8;
-  --color-selection: #dbeafe;
+  /* Fläche und Schatten haben (fast) dieselbe Farbe – das ist der Kern des Looks */
+  --color-bg: #e4e8ef;
+  --color-text: #51596b;
+  --color-heading: #2c3242;
+  --color-muted: #7b8499;
+  --color-border: #d2d8e2;
+  --color-accent: #3a5bd6;
+  --color-accent-hover: #2c49bd;
+  --color-selection: #c5d0e6;
+
+  --shadow-dark: #b9c0cf;
+  --shadow-light: #ffffff;
+
+  /* Neumorphe Schatten-Presets */
+  --nm-raised: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+  --nm-raised-sm: 5px 5px 11px var(--shadow-dark),
+    -5px -5px 11px var(--shadow-light);
+  --nm-pressed: inset 5px 5px 11px var(--shadow-dark),
+    inset -5px -5px 11px var(--shadow-light);
+  --nm-pressed-sm: inset 3px 3px 6px var(--shadow-dark),
+    inset -3px -3px 6px var(--shadow-light);
 
   --max-width: 44rem;
-  --radius: 12px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #0b0b0c;
-    --color-bg-subtle: #161618;
-    --color-text: #c4c4c9;
-    --color-heading: #fafafa;
-    --color-muted: #8b8b93;
-    --color-border: #26262a;
-    --color-accent: #6ea8fe;
-    --color-accent-hover: #9ec3ff;
-    --color-selection: #1e3a8a;
+    --color-bg: #2b2f36;
+    --color-text: #b3bccb;
+    --color-heading: #eaeef5;
+    --color-muted: #8a93a3;
+    --color-border: #3a3f48;
+    --color-accent: #8ba3ff;
+    --color-accent-hover: #aabcff;
+    --color-selection: #3a4a73;
+
+    --shadow-dark: #20242a;
+    --shadow-light: #363b44;
   }
 }
 
@@ -106,8 +119,8 @@ a:hover {
 
 :focus-visible {
   outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
-  border-radius: 3px;
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
 /* ===== Layout ===== */
@@ -136,7 +149,7 @@ a:hover {
   opacity: 0.7;
 }
 
-/* ===== Startseite: Profilkarte ===== */
+/* ===== Startseite: Profil ===== */
 .profile {
   flex: 1 0 auto;
   display: flex;
@@ -152,22 +165,44 @@ a:hover {
   align-items: center;
 }
 
+/* Avatar: erhabener, runder Rahmen mit eingesenktem Foto */
 .avatar {
   position: relative;
-  width: clamp(140px, 42vw, 184px);
+  width: clamp(156px, 44vw, 196px);
   aspect-ratio: 1;
   border-radius: 50%;
-  overflow: hidden;
-  background: var(--color-bg-subtle);
-  display: grid;
-  place-items: center;
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.06),
-    0 10px 30px rgba(0, 0, 0, 0.1);
+  background: var(--color-bg);
+  padding: 14px;
+  box-shadow: var(--nm-raised);
+}
+
+.avatar img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+/* sanfter Innenschatten, damit das Foto in den Rahmen eingelassen wirkt */
+.avatar::after {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border-radius: 50%;
+  box-shadow: var(--nm-pressed-sm);
+  pointer-events: none;
+  z-index: 3;
 }
 
 .avatar-fallback {
   position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: 2.75rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -175,58 +210,63 @@ a:hover {
   user-select: none;
 }
 
-.avatar img {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
 .profile h1 {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   font-size: clamp(1.9rem, 6vw, 2.6rem);
   font-weight: 700;
+  text-shadow:
+    1px 1px 1px var(--shadow-light),
+    -1px -1px 1px var(--shadow-dark);
 }
 
-/* ===== Kontakt-Icons ===== */
+/* ===== Kontakt-Icons (neumorphe Buttons) ===== */
 .socials {
   display: flex;
-  gap: 0.75rem;
+  gap: 1.1rem;
   justify-content: center;
-  margin-top: 1.75rem;
+  margin-top: 2rem;
 }
 
 .socials a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 46px;
-  height: 46px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   color: var(--color-heading);
-  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  box-shadow: var(--nm-raised-sm);
   transition:
-    color 0.15s ease,
-    border-color 0.15s ease,
-    background-color 0.15s ease;
+    box-shadow 0.2s ease,
+    color 0.2s ease;
 }
 
 .socials a:hover {
   color: var(--color-accent);
-  border-color: var(--color-accent);
-  background: var(--color-bg-subtle);
   text-decoration: none;
 }
 
+.socials a:active {
+  box-shadow: var(--nm-pressed);
+}
+
 .socials svg {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
 }
 
 /* ===== Inhalt-Sektionen (rechtliche Seiten) ===== */
 .section {
-  padding-block: 3rem;
+  padding-block: 2.5rem;
+}
+
+/* neumorphe Karte für längere Inhalte */
+.card {
+  background: var(--color-bg);
+  border-radius: 22px;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  box-shadow: var(--nm-raised);
 }
 
 .section h2 {
@@ -250,21 +290,10 @@ a:hover {
   padding-left: 1.25rem;
 }
 
-.legal .note {
-  margin-top: 2rem;
-  padding: 1rem 1.25rem;
-  background: var(--color-bg-subtle);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  font-size: 0.95rem;
-  color: var(--color-muted);
-}
-
 /* ===== Footer ===== */
 .site-footer {
   flex-shrink: 0;
-  padding-block: 2rem;
-  border-top: 1px solid var(--color-border);
+  padding-block: 2.5rem;
 }
 
 .footer-inner {
