@@ -28,24 +28,14 @@
   --shadow-dark: #b9c0cf;
   --shadow-light: #ffffff;
 
-  /* Richtung der Lichtquelle (1,1 = Licht von oben-links).
-     Wird auf Mobilgeraeten per Gyroskop dynamisch angepasst (siehe Layout.astro). */
-  --nm-sx: 1;
-  --nm-sy: 1;
-
-  /* Neumorphe Schatten-Presets (Offset-Richtung folgt --nm-sx / --nm-sy) */
-  --nm-raised:
-    calc(var(--nm-sx) * 8px) calc(var(--nm-sy) * 8px) 16px var(--shadow-dark),
-    calc(var(--nm-sx) * -8px) calc(var(--nm-sy) * -8px) 16px var(--shadow-light);
-  --nm-raised-sm:
-    calc(var(--nm-sx) * 5px) calc(var(--nm-sy) * 5px) 11px var(--shadow-dark),
-    calc(var(--nm-sx) * -5px) calc(var(--nm-sy) * -5px) 11px var(--shadow-light);
-  --nm-pressed:
-    inset calc(var(--nm-sx) * 5px) calc(var(--nm-sy) * 5px) 11px var(--shadow-dark),
-    inset calc(var(--nm-sx) * -5px) calc(var(--nm-sy) * -5px) 11px var(--shadow-light);
-  --nm-pressed-sm:
-    inset calc(var(--nm-sx) * 3px) calc(var(--nm-sy) * 3px) 6px var(--shadow-dark),
-    inset calc(var(--nm-sx) * -3px) calc(var(--nm-sy) * -3px) 6px var(--shadow-light);
+  /* Neumorphe Schatten-Presets */
+  --nm-raised: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+  --nm-raised-sm: 5px 5px 11px var(--shadow-dark),
+    -5px -5px 11px var(--shadow-light);
+  --nm-pressed: inset 5px 5px 11px var(--shadow-dark),
+    inset -5px -5px 11px var(--shadow-light);
+  --nm-pressed-sm: inset 3px 3px 6px var(--shadow-dark),
+    inset -3px -3px 6px var(--shadow-light);
 
   --max-width: 44rem;
 }
@@ -247,9 +237,9 @@ a:hover {
   color: var(--color-heading);
   background: var(--color-bg);
   box-shadow: var(--nm-raised-sm);
-  /* Nur die Farbe animieren: Der Schatten folgt direkt der (bereits weich
-     interpolierten) Lichtrichtung, sonst zieht er beim Kippen sichtbar nach. */
-  transition: color 0.2s ease;
+  transition:
+    box-shadow 0.2s ease,
+    color 0.2s ease;
 }
 
 .socials a:hover {

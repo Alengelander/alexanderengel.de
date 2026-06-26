@@ -5,14 +5,6 @@ Visitenkarte im Neumorphismus-Stil. Gebaut mit [Astro](https://astro.build/).
 Ohne externe Tracker und ohne externe Schrift-CDNs: Die Schrift **Inter** ist
 selbst gehostet, es werden keine Anfragen an Dritte (z. B. Google Fonts) gestellt.
 
-**Dynamischer Lichteffekt (Mobilgeräte):** Auf Geräten mit Lagesensor folgt die
-Lichtquelle der Geräteneigung – beim Kippen wandern Schatten und Glanzlichter der
-neumorphen Elemente mit (DeviceOrientation-API, auf iOS nach einmaligem Antippen).
-Die Lichtrichtung steckt in den CSS-Variablen `--nm-sx` / `--nm-sy`, die ein
-kleines Inline-Skript in `src/layouts/Layout.astro` aus den Sensordaten aktualisiert.
-Ohne Sensor, ohne JavaScript oder bei `prefers-reduced-motion` bleiben die
-statischen Schatten erhalten.
-
 ## Entwicklung
 
 ```bash
