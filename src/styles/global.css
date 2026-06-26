@@ -16,7 +16,7 @@
     Roboto, Helvetica, Arial, sans-serif;
 
   /* Fläche und Schatten haben (fast) dieselbe Farbe – das ist der Kern des Looks */
-  --color-bg: #e4e8ef;
+  --color-bg: #f0f0f0;
   --color-text: #51596b;
   --color-heading: #2c3242;
   --color-muted: #7b8499;
@@ -25,7 +25,7 @@
   --color-accent-hover: #2c49bd;
   --color-selection: #c5d0e6;
 
-  --shadow-dark: #b9c0cf;
+  --shadow-dark: #cbcbcb;
   --shadow-light: #ffffff;
 
   /* Neumorphe Schatten-Presets */
