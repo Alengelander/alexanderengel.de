@@ -25,11 +25,8 @@
   --color-accent-hover: #2c49bd;
   --color-selection: #c5d0e6;
 
-  /* Halbtransparent -> Tiefen-/Schatteneffekte nehmen die Hintergrundfarbe an. */
-  --shadow-dark: rgba(38, 44, 84, 0.35);
-  --shadow-light: rgba(255, 255, 255, 0.8);
-  /* Leicht durchscheinende Glas-Oberflaeche fuer Karten (bleibt gut lesbar). */
-  --card-surface: rgba(255, 255, 255, 0.5);
+  --shadow-dark: #cbcbcb;
+  --shadow-light: #ffffff;
 
   /* Neumorphe Schatten-Presets */
   --nm-raised: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
@@ -54,9 +51,8 @@
     --color-accent-hover: #aabcff;
     --color-selection: #3a4a73;
 
-    --shadow-dark: rgba(0, 0, 0, 0.45);
-    --shadow-light: rgba(255, 255, 255, 0.1);
-    --card-surface: rgba(36, 41, 51, 0.45);
+    --shadow-dark: #20242a;
+    --shadow-light: #363b44;
   }
 }
 
@@ -187,7 +183,7 @@ a:hover {
   width: clamp(156px, 44vw, 196px);
   aspect-ratio: 1;
   border-radius: 50%;
-  background: transparent;
+  background: var(--color-bg);
   box-shadow: var(--nm-raised);
 }
 
@@ -239,7 +235,7 @@ a:hover {
   height: 56px;
   border-radius: 50%;
   color: var(--color-heading);
-  background: transparent;
+  background: var(--color-bg);
   box-shadow: var(--nm-raised-sm);
   transition:
     box-shadow 0.2s ease,
@@ -267,7 +263,7 @@ a:hover {
 
 /* neumorphe Karte für längere Inhalte */
 .card {
-  background: var(--card-surface);
+  background: var(--color-bg);
   border-radius: 22px;
   padding: clamp(1.5rem, 4vw, 2.5rem);
   box-shadow: var(--nm-raised);
@@ -326,120 +322,4 @@ a:hover {
   margin: 0;
   color: var(--color-muted);
   font-size: 0.9rem;
-}
-
-/* ===== Animierter Farb-Hintergrund ("wabernde" Farben) ===== */
-/* Liegt hinter dem gesamten Inhalt; die neumorphen Flächen decken ihn lokal ab. */
-.aurora {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
-  /* Flaechendeckender, weicher Farb-Teppich als Basis -> keine weissen Luecken,
-     weiche Uebergaenge (jede Farbe blendet in ihre eigene 0-Deckkraft aus). */
-  background:
-    radial-gradient(72% 72% at 18% 20%, rgba(79, 110, 247, 0.12), rgba(79, 110, 247, 0) 100%),
-    radial-gradient(72% 72% at 84% 16%, rgba(232, 96, 180, 0.12), rgba(232, 96, 180, 0) 100%),
-    radial-gradient(76% 76% at 20% 88%, rgba(32, 196, 160, 0.12), rgba(32, 196, 160, 0) 100%),
-    radial-gradient(82% 82% at 84% 84%, rgba(157, 108, 245, 0.13), rgba(157, 108, 245, 0) 100%),
-    radial-gradient(100% 100% at 50% 50%, rgba(120, 170, 255, 0.1), rgba(120, 170, 255, 0) 100%),
-    #e9ecf6;
-}
-
-@media (prefers-color-scheme: dark) {
-  .aurora {
-    background:
-      radial-gradient(72% 72% at 18% 20%, rgba(99, 130, 255, 0.16), rgba(99, 130, 255, 0) 100%),
-      radial-gradient(72% 72% at 84% 16%, rgba(232, 96, 180, 0.15), rgba(232, 96, 180, 0) 100%),
-      radial-gradient(76% 76% at 20% 88%, rgba(32, 196, 160, 0.15), rgba(32, 196, 160, 0) 100%),
-      radial-gradient(82% 82% at 84% 84%, rgba(157, 108, 245, 0.16), rgba(157, 108, 245, 0) 100%),
-      radial-gradient(100% 100% at 50% 50%, rgba(90, 140, 235, 0.13), rgba(90, 140, 235, 0) 100%),
-      #23272e;
-  }
-}
-
-.aurora__blob {
-  position: absolute;
-  width: 78vmax;
-  height: 78vmax;
-  border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.16;
-  will-change: transform;
-}
-
-.aurora__blob--1 {
-  top: -15%;
-  left: -10%;
-  background: radial-gradient(circle, #4f6ef7 0%, rgba(79, 110, 247, 0) 78%);
-  animation: aurora-drift-1 26s ease-in-out infinite;
-}
-
-.aurora__blob--2 {
-  top: -12%;
-  right: -15%;
-  background: radial-gradient(circle, #e860b4 0%, rgba(232, 96, 180, 0) 78%);
-  animation: aurora-drift-2 32s ease-in-out infinite;
-}
-
-.aurora__blob--3 {
-  bottom: -20%;
-  left: -8%;
-  background: radial-gradient(circle, #20c4a0 0%, rgba(32, 196, 160, 0) 78%);
-  animation: aurora-drift-3 30s ease-in-out infinite;
-}
-
-.aurora__blob--4 {
-  bottom: -15%;
-  right: -10%;
-  background: radial-gradient(circle, #9d6cf5 0%, rgba(157, 108, 245, 0) 78%);
-  animation: aurora-drift-4 36s ease-in-out infinite;
-}
-
-@keyframes aurora-drift-1 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(12vw, 10vh) scale(1.15);
-  }
-}
-
-@keyframes aurora-drift-2 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(-10vw, 12vh) scale(1.2);
-  }
-}
-
-@keyframes aurora-drift-3 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1.1);
-  }
-  50% {
-    transform: translate(9vw, -10vh) scale(1);
-  }
-}
-
-@keyframes aurora-drift-4 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(-12vw, -8vh) scale(1.18);
-  }
-}
-
-/* Wer im System "Bewegung reduzieren" aktiviert hat, sieht die Farben ruhig stehen. */
-@media (prefers-reduced-motion: reduce) {
-  .aurora__blob {
-    animation: none !important;
-  }
 }
