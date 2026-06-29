@@ -339,22 +339,22 @@ a:hover {
   /* Flaechendeckender, weicher Farb-Teppich als Basis -> keine weissen Luecken,
      weiche Uebergaenge (jede Farbe blendet in ihre eigene 0-Deckkraft aus). */
   background:
-    radial-gradient(72% 72% at 18% 20%, rgba(79, 110, 247, 0.24), rgba(79, 110, 247, 0) 100%),
-    radial-gradient(72% 72% at 84% 16%, rgba(232, 96, 180, 0.24), rgba(232, 96, 180, 0) 100%),
-    radial-gradient(76% 76% at 20% 88%, rgba(32, 196, 160, 0.24), rgba(32, 196, 160, 0) 100%),
-    radial-gradient(82% 82% at 84% 84%, rgba(157, 108, 245, 0.26), rgba(157, 108, 245, 0) 100%),
-    radial-gradient(100% 100% at 50% 50%, rgba(120, 170, 255, 0.18), rgba(120, 170, 255, 0) 100%),
+    radial-gradient(72% 72% at 18% 20%, rgba(79, 110, 247, 0.12), rgba(79, 110, 247, 0) 100%),
+    radial-gradient(72% 72% at 84% 16%, rgba(232, 96, 180, 0.12), rgba(232, 96, 180, 0) 100%),
+    radial-gradient(76% 76% at 20% 88%, rgba(32, 196, 160, 0.12), rgba(32, 196, 160, 0) 100%),
+    radial-gradient(82% 82% at 84% 84%, rgba(157, 108, 245, 0.13), rgba(157, 108, 245, 0) 100%),
+    radial-gradient(100% 100% at 50% 50%, rgba(120, 170, 255, 0.1), rgba(120, 170, 255, 0) 100%),
     #e9ecf6;
 }
 
 @media (prefers-color-scheme: dark) {
   .aurora {
     background:
-      radial-gradient(72% 72% at 18% 20%, rgba(99, 130, 255, 0.3), rgba(99, 130, 255, 0) 100%),
-      radial-gradient(72% 72% at 84% 16%, rgba(232, 96, 180, 0.28), rgba(232, 96, 180, 0) 100%),
-      radial-gradient(76% 76% at 20% 88%, rgba(32, 196, 160, 0.28), rgba(32, 196, 160, 0) 100%),
-      radial-gradient(82% 82% at 84% 84%, rgba(157, 108, 245, 0.3), rgba(157, 108, 245, 0) 100%),
-      radial-gradient(100% 100% at 50% 50%, rgba(90, 140, 235, 0.24), rgba(90, 140, 235, 0) 100%),
+      radial-gradient(72% 72% at 18% 20%, rgba(99, 130, 255, 0.16), rgba(99, 130, 255, 0) 100%),
+      radial-gradient(72% 72% at 84% 16%, rgba(232, 96, 180, 0.15), rgba(232, 96, 180, 0) 100%),
+      radial-gradient(76% 76% at 20% 88%, rgba(32, 196, 160, 0.15), rgba(32, 196, 160, 0) 100%),
+      radial-gradient(82% 82% at 84% 84%, rgba(157, 108, 245, 0.16), rgba(157, 108, 245, 0) 100%),
+      radial-gradient(100% 100% at 50% 50%, rgba(90, 140, 235, 0.13), rgba(90, 140, 235, 0) 100%),
       #23272e;
   }
 }
@@ -365,7 +365,7 @@ a:hover {
   height: 78vmax;
   border-radius: 50%;
   filter: blur(90px);
-  opacity: 0.3;
+  opacity: 0.16;
   will-change: transform;
 }
 
