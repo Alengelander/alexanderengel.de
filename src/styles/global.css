@@ -31,6 +31,14 @@
   /* Leicht durchscheinende Glas-Oberflaeche fuer Karten (bleibt gut lesbar). */
   --card-surface: rgba(255, 255, 255, 0.5);
 
+  /* Milchglas / "Liquid Glass" fuer Knoepfe, Profilbild und Karten */
+  --glass-bg: rgba(255, 255, 255, 0.18);
+  --glass-border: rgba(255, 255, 255, 0.55);
+  --glass-blur: blur(14px) saturate(180%);
+  --glass-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.7),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.12),
+    0 8px 22px rgba(38, 44, 84, 0.2);
+
   /* Neumorphe Schatten-Presets */
   --nm-raised: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
   --nm-raised-sm: 5px 5px 11px var(--shadow-dark),
@@ -57,6 +65,12 @@
     --shadow-dark: rgba(0, 0, 0, 0.45);
     --shadow-light: rgba(255, 255, 255, 0.1);
     --card-surface: rgba(36, 41, 51, 0.45);
+
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25),
+      inset 0 -1px 1px rgba(255, 255, 255, 0.05),
+      0 8px 22px rgba(0, 0, 0, 0.45);
   }
 }
 
@@ -187,8 +201,11 @@ a:hover {
   width: clamp(156px, 44vw, 196px);
   aspect-ratio: 1;
   border-radius: 50%;
-  background: transparent;
-  box-shadow: var(--nm-raised);
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
 }
 
 .avatar img {
@@ -239,20 +256,30 @@ a:hover {
   height: 56px;
   border-radius: 50%;
   color: var(--color-heading);
-  background: transparent;
-  box-shadow: var(--nm-raised-sm);
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
   transition:
     box-shadow 0.2s ease,
-    color 0.2s ease;
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .socials a:hover {
   color: var(--color-accent);
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.75);
   text-decoration: none;
 }
 
 .socials a:active {
-  box-shadow: var(--nm-pressed);
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 7px rgba(38, 44, 84, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
 }
 
 .socials svg {
@@ -268,9 +295,12 @@ a:hover {
 /* neumorphe Karte für längere Inhalte */
 .card {
   background: var(--card-surface);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
   border-radius: 22px;
   padding: clamp(1.5rem, 4vw, 2.5rem);
-  box-shadow: var(--nm-raised);
+  box-shadow: var(--glass-shadow);
 }
 
 .section h2 {
