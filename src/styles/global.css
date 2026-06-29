@@ -25,8 +25,11 @@
   --color-accent-hover: #2c49bd;
   --color-selection: #c5d0e6;
 
-  --shadow-dark: #cbcbcb;
-  --shadow-light: #ffffff;
+  /* Halbtransparent -> Tiefen-/Schatteneffekte nehmen die Hintergrundfarbe an. */
+  --shadow-dark: rgba(38, 44, 84, 0.35);
+  --shadow-light: rgba(255, 255, 255, 0.8);
+  /* Leicht durchscheinende Glas-Oberflaeche fuer Karten (bleibt gut lesbar). */
+  --card-surface: rgba(255, 255, 255, 0.5);
 
   /* Neumorphe Schatten-Presets */
   --nm-raised: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
@@ -51,8 +54,9 @@
     --color-accent-hover: #aabcff;
     --color-selection: #3a4a73;
 
-    --shadow-dark: #20242a;
-    --shadow-light: #363b44;
+    --shadow-dark: rgba(0, 0, 0, 0.45);
+    --shadow-light: rgba(255, 255, 255, 0.1);
+    --card-surface: rgba(36, 41, 51, 0.45);
   }
 }
 
@@ -183,7 +187,7 @@ a:hover {
   width: clamp(156px, 44vw, 196px);
   aspect-ratio: 1;
   border-radius: 50%;
-  background: var(--color-bg);
+  background: transparent;
   box-shadow: var(--nm-raised);
 }
 
@@ -235,7 +239,7 @@ a:hover {
   height: 56px;
   border-radius: 50%;
   color: var(--color-heading);
-  background: var(--color-bg);
+  background: transparent;
   box-shadow: var(--nm-raised-sm);
   transition:
     box-shadow 0.2s ease,
@@ -263,7 +267,7 @@ a:hover {
 
 /* neumorphe Karte für längere Inhalte */
 .card {
-  background: var(--color-bg);
+  background: var(--card-surface);
   border-radius: 22px;
   padding: clamp(1.5rem, 4vw, 2.5rem);
   box-shadow: var(--nm-raised);
